@@ -5,10 +5,25 @@ WindowManager::WindowManager(int width, int height, const char *title) {
         std::cerr << "Error to initialize GLFW.\n";
         std::exit(EXIT_FAILURE);
     }
+
+    _window = glfwCreateWindow(width, height, title, NULL, NULL);
+
+    if (!_window) {
+        std::cerr << "Error to create window.\n";
+        glfwTerminate();
+        std::exit(EXIT_FAILURE);
+    }
 }
 
 WindowManager::~WindowManager() {
-    if(!_window) {
-        std::cerr << "Error to create a window.\n";
-    }
+    glfwDestroyWindow(_window);
+    glfwTerminate();
+}
+
+bool WindowManager::shouldClose() {
+    return glfwWindowShouldClose(_window);
+}
+
+void WindowManager::render() {
+    // TODO
 }

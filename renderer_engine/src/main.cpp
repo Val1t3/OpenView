@@ -1,22 +1,10 @@
 #include <iostream>
+#include "WindowManager.hpp"
 
 int main(int, char**){
-    // // Initialize GLFW
-    // if (!glfwInit()) {
-    //     std::cerr << "Error to initialize GLFW.\n";
-    //     return EXIT_FAILURE;
-    // }
+    WindowManager wm(800, 600, "Renderer Engine");
 
-    // // Set primary monitor
-    // GLFWmonitor* primary_monitor = glfwGetPrimaryMonitor();
-
-    // GLFWwindow* window = glfwCreateWindow(800, 600, "Open View", NULL, NULL);
-
-    // while(true) {
-
-    // }
-
-    // glfwDestroyWindow(window);
-
-    // return EXIT_SUCCESS;
+    while(!wm.shouldClose()) {
+    }
+    std::exit(EXIT_SUCCESS);
 }

@@ -15,6 +15,9 @@ class WindowManager {
         WindowManager(int width, int height, const char *title);
         ~WindowManager();
 
+        bool shouldClose();
+        void render();
+
     private:
         GLFWwindow *_window;
 };
