@@ -4,7 +4,7 @@
 int main(int, char**){
     WindowManager wm(800, 600, "Renderer Engine");
 
-    while(!wm.shouldClose()) {
-    }
+    while(!wm.shouldClose())  // Renderer loop
+        wm.render();
     std::exit(EXIT_SUCCESS);
 }
