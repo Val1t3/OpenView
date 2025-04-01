@@ -17,6 +17,9 @@ class WindowManager {
 
         bool shouldClose();
         void render();
+        void onKey(int key, int scancode, int action, int mods);
+
+        static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
     private:
         GLFWwindow *_window;
