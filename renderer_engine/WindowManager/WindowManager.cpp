@@ -1,6 +1,13 @@
+/*
+** Valentin Woehrel, 2025
+** OpenView
+** WindowManager
+*/
+
 #include "WindowManager.hpp"
 
-WindowManager::WindowManager(int width, int height, const char *title) {
+WindowManager::WindowManager(int width, int height, const char *title)
+{
     if (!glfwInit()) {
         std::cerr << "Error to initialize GLFW.\n";
         std::exit(EXIT_FAILURE);
@@ -34,26 +41,37 @@ WindowManager::WindowManager(int width, int height, const char *title) {
     glfwSetFramebufferSizeCallback(_window, WindowManager::framebufferSizeCallback);
 }
 
-WindowManager::~WindowManager() {
+WindowManager::~WindowManager()
+{
     glfwDestroyWindow(_window);
-    glfwTerminate();
 }
 
-bool WindowManager::shouldClose() {
+GLFWwindow *WindowManager::getWindow()
+{
+    return _window;
+}
+
+bool WindowManager::shouldClose()
+{
     return glfwWindowShouldClose(_window);
 }
 
-void WindowManager::render() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  // Clear the buffers
+void WindowManager::render()
+{
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     glfwSwapBuffers(_window);
     glfwPollEvents();
 }
 
-void WindowManager::onKey(int key, int scancode, int action, int mods) {
+void WindowManager::onKey(int key, int scancode, int action, int mods)
+{
     std::cout << "[GLFW] Key " << key << " pressed!" << std::endl;
 }
 
-void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
     auto *instance = static_cast<WindowManager *>(glfwGetWindowUserPointer(window));
 
     if (!instance) return;
@@ -61,6 +79,7 @@ void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int a
     instance->onKey(key, scancode, action, mods);
 }
 
-void WindowManager::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
+void WindowManager::framebufferSizeCallback(GLFWwindow *window, int width, int height)
+{
     glViewport(0, 0, width, height);
 }

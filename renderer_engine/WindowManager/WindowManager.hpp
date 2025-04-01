@@ -8,12 +8,15 @@
 #define WINDOWMANAGER_HPP_
 
 #include <iostream>
+
 #include <GLFW/glfw3.h>
 
 class WindowManager {
     public:
         WindowManager(int width, int height, const char *title);
         ~WindowManager();
+
+        GLFWwindow *getWindow();
 
         bool shouldClose();
         void render();

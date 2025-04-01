@@ -11,9 +11,13 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_subdirectory(WindowManager)
+add_subdirectory(GraphicPipeline)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE WindowManager)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    WindowManager
+    GraphicPipeline
+)
