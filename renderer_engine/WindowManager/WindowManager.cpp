@@ -16,8 +16,8 @@ WindowManager::WindowManager(int width, int height, const char *title) {
 
     // Create window
     _window = glfwCreateWindow(width, height, title, NULL, NULL);
+    glViewport(0, 0, width, height);
 
-    // TODO: Set framebuffer size?
     // TODO: Window iconification
 
     if (!_window) {
@@ -28,7 +28,10 @@ WindowManager::WindowManager(int width, int height, const char *title) {
 
     glfwSetWindowUserPointer(_window, this);
     glfwMakeContextCurrent(_window);
+
+    // Set callback functions
     glfwSetKeyCallback(_window, WindowManager::keyCallback);
+    glfwSetFramebufferSizeCallback(_window, WindowManager::framebufferSizeCallback);
 }
 
 WindowManager::~WindowManager() {
@@ -56,4 +59,8 @@ void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int a
     if (!instance) return;
 
     instance->onKey(key, scancode, action, mods);
+}
+
+void WindowManager::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
+    glViewport(0, 0, width, height);
 }
