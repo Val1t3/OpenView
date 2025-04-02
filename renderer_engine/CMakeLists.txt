@@ -7,6 +7,8 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.c
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+add_compile_definitions(GL_SILENCE_DEPRECATION)
+
 find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 
