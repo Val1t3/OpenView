@@ -8,7 +8,6 @@
 
 GraphicPipeline::GraphicPipeline()
 {
-    _vs = VertexShader();
 }
 
 GraphicPipeline::~GraphicPipeline()
@@ -18,9 +17,22 @@ GraphicPipeline::~GraphicPipeline()
 void GraphicPipeline::test()
 {
     std::cout << "graphic pipeline" << std::endl;
-}
 
-VertexShader* GraphicPipeline::getVertexShader()
-{
-    return &_vs;
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0, 0.5f, 0.0f
+    };
+
+    // ### VERTEX INPUT ###
+    // Generate buffers
+    unsigned int VBO;
+    glGenBuffers(1, &VBO);
+
+    // Bind buffer
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    // Configure the bound buffer
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    // TODO: segfault
 }

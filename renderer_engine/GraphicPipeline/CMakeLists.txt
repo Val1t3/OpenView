@@ -1,6 +1,6 @@
 add_library(GraphicPipeline STATIC
     GraphicPipeline.cpp
-    VertexShader/VertexShader.cpp
+    Shader/Shader.cpp
 )
 
 target_include_directories(GraphicPipeline PUBLIC

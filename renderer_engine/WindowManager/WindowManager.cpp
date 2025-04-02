@@ -51,12 +51,12 @@ GLFWwindow *WindowManager::getWindow()
     return _window;
 }
 
-bool WindowManager::shouldClose()
+bool WindowManager::shouldClose() const
 {
     return glfwWindowShouldClose(_window);
 }
 
-void WindowManager::render()
+void WindowManager::render() const
 {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -65,7 +65,7 @@ void WindowManager::render()
     glfwPollEvents();
 }
 
-void WindowManager::onKey(int key, int scancode, int action, int mods)
+void WindowManager::onKey(int key, int scancode, int action, int mods) const
 {
     std::cout << "[GLFW] Key " << key << " pressed!" << std::endl;
 }

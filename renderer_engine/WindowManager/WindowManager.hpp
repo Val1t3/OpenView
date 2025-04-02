@@ -18,9 +18,9 @@ class WindowManager {
 
         GLFWwindow *getWindow();
 
-        bool shouldClose();
-        void render();
-        void onKey(int key, int scancode, int action, int mods);
+        bool shouldClose() const;
+        void render() const;
+        void onKey(int key, int scancode, int action, int mods) const;
 
         static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
         static void framebufferSizeCallback(GLFWwindow *window, int width, int height);

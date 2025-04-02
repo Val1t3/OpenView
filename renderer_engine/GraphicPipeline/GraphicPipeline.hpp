@@ -9,7 +9,11 @@
 
 #include <iostream>
 
-#include "VertexShader/VertexShader.hpp"
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#else
+#include <GL/gl.h>
+#endif
 
 class GraphicPipeline {
     public:
@@ -18,10 +22,7 @@ class GraphicPipeline {
 
         void test();
 
-        VertexShader *getVertexShader();
-
     private:
-        VertexShader _vs;
 };
 
 #endif /* !GRAPHICPIPELINE_HPP_ */
