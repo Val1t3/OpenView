@@ -36,6 +36,10 @@ WindowManager::WindowManager(int width, int height, const char *title)
     glfwSetWindowUserPointer(_window, this);
     glfwMakeContextCurrent(_window);
 
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cerr << "[GLAD] Failed to initialize OpenGL context" << std::endl;
+    }
+
     // Set callback functions
     glfwSetKeyCallback(_window, WindowManager::keyCallback);
     glfwSetFramebufferSizeCallback(_window, WindowManager::framebufferSizeCallback);

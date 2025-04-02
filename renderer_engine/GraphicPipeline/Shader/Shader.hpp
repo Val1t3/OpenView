@@ -12,12 +12,6 @@
 #include <sstream>
 #include <iostream>
 
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
-
 class Shader {
     public:
         Shader(const std::string &vertexPath, const std::string &fragmentPath);

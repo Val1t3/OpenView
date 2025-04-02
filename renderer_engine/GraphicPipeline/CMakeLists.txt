@@ -7,6 +7,7 @@ target_include_directories(GraphicPipeline PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(GraphicPipeline
-    OpenGL::GL
+target_link_libraries(GraphicPipeline PUBLIC
+    glad
+    PRIVATE OpenGL::GL
 )

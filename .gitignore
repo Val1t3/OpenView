@@ -36,3 +36,4 @@
 
 # Build directories
 build/
+vcpkg_installed/

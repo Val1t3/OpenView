@@ -13,6 +13,7 @@ int main(int, char**){
     WindowManager wm(800, 600, "Renderer Engine");
     GraphicPipeline gp;
 
+
     // Renderer loop
     while(!wm.shouldClose())
         wm.render();
