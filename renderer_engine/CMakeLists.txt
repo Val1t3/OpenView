@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_compile_definitions(GL_SILENCE_DEPRECATION)
 
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
+
 find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 

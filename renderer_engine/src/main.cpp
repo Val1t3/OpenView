@@ -10,19 +10,15 @@
 #include "GraphicPipeline.hpp"
 
 int main(int, char**){
-    // ### Graphic section ###
+    WindowManager wm(800, 600, "Renderer Engine");
     GraphicPipeline gp;
-    gp.test();
 
-    // ### Window section ###
-    // WindowManager wm(800, 600, "Renderer Engine");
+    // Renderer loop
+    while(!wm.shouldClose())
+        wm.render();
 
-    // // Renderer loop
-    // while(!wm.shouldClose())
-    //     wm.render();
-
-    // // Quit programm
-    // glfwTerminate();
+    // Quit programm
+    glfwTerminate();
 
     std::exit(EXIT_SUCCESS);
 }

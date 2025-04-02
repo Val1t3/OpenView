@@ -43,6 +43,8 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);
+
+    std::cout << "Shader initialized" << std::endl;  // Debug
 }
 
 Shader::~Shader()
@@ -63,6 +65,10 @@ void Shader::use() const
 std::string Shader::readFile(const std::string &path) const
 {
     std::ifstream file(path);
+    if (!file.is_open()) {
+        std::cerr << "[Shader error] Failed to open file: " << path << std::endl;
+        return "";
+    }
     std::stringstream buffer;
     buffer << file.rdbuf();
     return buffer.str();

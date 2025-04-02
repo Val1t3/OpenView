@@ -15,6 +15,8 @@
 #include <GL/gl.h>
 #endif
 
+#include "Shader/Shader.hpp"
+
 class GraphicPipeline {
     public:
         GraphicPipeline();
@@ -23,6 +25,7 @@ class GraphicPipeline {
         void test();
 
     private:
+        Shader _shader;
 };
 
 #endif /* !GRAPHICPIPELINE_HPP_ */
