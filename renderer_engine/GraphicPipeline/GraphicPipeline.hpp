@@ -11,6 +11,8 @@
 
 #include "Shader/Shader.hpp"
 
+#include <glad/glad.h>
+
 class GraphicPipeline {
     public:
         GraphicPipeline();

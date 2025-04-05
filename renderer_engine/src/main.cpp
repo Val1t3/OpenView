@@ -13,6 +13,11 @@ int main(int, char**){
     WindowManager wm(800, 600, "Renderer Engine");
     GraphicPipeline gp;
 
+    // Initialize glad
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cerr << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }
 
     // Renderer loop
     while(!wm.shouldClose())
