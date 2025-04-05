@@ -11,7 +11,7 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
     // Read files and convert code to C string
     std::string vertexCodeStr = readFile(vertexPath);
     if (vertexCodeStr.empty()) {
-        std::cerr << "Shader: Failed to read vertex shader file: " << vertexPath << std::endl;
+        std::cerr << "[Shader error] Failed to read vertex shader file: " << vertexPath << std::endl;
         return;
     }
     const char *vertexCode = vertexCodeStr.c_str();
@@ -43,8 +43,6 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);
-
-    std::cout << "Shader initialized" << std::endl;  // Debug
 }
 
 Shader::~Shader()

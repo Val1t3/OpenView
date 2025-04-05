@@ -13,6 +13,7 @@
 #include <iostream>
 
 #include <glad/glad.h>
+#include <OpenGL/gl.h>
 
 class Shader {
     public:

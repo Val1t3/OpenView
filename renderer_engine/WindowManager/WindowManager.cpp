@@ -8,8 +8,10 @@
 
 WindowManager::WindowManager(int width, int height, const char *title)
 {
-    if (!glfwInit()) {
-        std::cerr << "Error to initialize GLFW.\n";
+    // Initialize GLFW
+    if (!glfwInit())
+    {
+        std::cerr << "[WindowManager error] Failed to initialize GLFW\n";
         std::exit(EXIT_FAILURE);
     }
 
@@ -23,18 +25,26 @@ WindowManager::WindowManager(int width, int height, const char *title)
 
     // Create window
     _window = glfwCreateWindow(width, height, title, NULL, NULL);
-    glViewport(0, 0, width, height);
-
-    // TODO: Window iconification
 
     if (!_window) {
-        std::cerr << "Error to create window.\n";
+        std::cerr << "[WindowManager error] Failed to create a window\n";
         glfwTerminate();
         std::exit(EXIT_FAILURE);
     }
 
-    glfwSetWindowUserPointer(_window, this);
     glfwMakeContextCurrent(_window);
+    glfwSetWindowUserPointer(_window, this);
+
+    // Initialize OpenGL context
+    if (gladLoadGL() == 0) {
+        std::cerr << "[WindowManager error] Failed to initialize OpenGL context\n";
+        exit(EXIT_FAILURE);
+    }
+
+    // Define window viewport
+    glViewport(0, 0, width, height);
+
+    // TODO: Window iconification
 
     // Set callback functions
     glfwSetKeyCallback(_window, WindowManager::keyCallback);
