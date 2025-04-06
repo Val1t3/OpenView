@@ -6,16 +6,16 @@
 
 #include "GraphicPipeline.hpp"
 
-GraphicPipeline::GraphicPipeline()
+RendererEngine::GraphicPipeline::GraphicPipeline()
 : _shader("assets/shaders/vertex_shader.glsl", "assets/shaders/fragment_shader.glsl")
 {
 }
 
-GraphicPipeline::~GraphicPipeline()
+RendererEngine::GraphicPipeline::~GraphicPipeline()
 {
 }
 
-void GraphicPipeline::test()
+void RendererEngine::GraphicPipeline::test()
 {
     std::cout << "graphic pipeline" << std::endl;
 

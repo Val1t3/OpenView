@@ -6,7 +6,7 @@
 
 #include "WindowManager.hpp"
 
-WindowManager::WindowManager(int width, int height, const char *title)
+RendererEngine::WindowManager::WindowManager(int width, int height, const char *title)
 {
     // Initialize GLFW
     if (!glfwInit())
@@ -51,22 +51,22 @@ WindowManager::WindowManager(int width, int height, const char *title)
     glfwSetFramebufferSizeCallback(_window, WindowManager::framebufferSizeCallback);
 }
 
-WindowManager::~WindowManager()
+RendererEngine::WindowManager::~WindowManager()
 {
     glfwDestroyWindow(_window);
 }
 
-GLFWwindow *WindowManager::getWindow()
+GLFWwindow *RendererEngine::WindowManager::getWindow()
 {
     return _window;
 }
 
-bool WindowManager::shouldClose() const
+bool RendererEngine::WindowManager::shouldClose() const
 {
     return glfwWindowShouldClose(_window);
 }
 
-void WindowManager::render() const
+void RendererEngine::WindowManager::render() const
 {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -75,12 +75,12 @@ void WindowManager::render() const
     glfwPollEvents();
 }
 
-void WindowManager::onKey(int key, int scancode, int action, int mods) const
+void RendererEngine::WindowManager::onKey(int key, int scancode, int action, int mods) const
 {
     std::cout << "[GLFW] Key " << key << " pressed!" << std::endl;
 }
 
-void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+void RendererEngine::WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     auto *instance = static_cast<WindowManager *>(glfwGetWindowUserPointer(window));
 
@@ -89,7 +89,7 @@ void WindowManager::keyCallback(GLFWwindow *window, int key, int scancode, int a
     instance->onKey(key, scancode, action, mods);
 }
 
-void WindowManager::framebufferSizeCallback(GLFWwindow *window, int width, int height)
+void RendererEngine::WindowManager::framebufferSizeCallback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }

@@ -15,20 +15,22 @@
 #include <glad/glad.h>
 #include <OpenGL/gl.h>
 
-class Shader {
-    public:
-        Shader(const std::string &vertexPath, const std::string &fragmentPath);
-        ~Shader();
+namespace RendererManager {
+    class Shader {
+        public:
+            Shader(const std::string &vertexPath, const std::string &fragmentPath);
+            ~Shader();
 
-        GLuint getId() const;
+            GLuint getId() const;
 
-        void use() const;
+            void use() const;
 
-    private:
-        GLuint _id;
+        private:
+            GLuint _id;
 
-        std::string readFile(const std::string &path) const;
-        int checkCompileError(GLuint shader, const std::string type) const;
-};
+            std::string readFile(const std::string &path) const;
+            int checkCompileError(GLuint shader, const std::string type) const;
+    };  // Shader
+};  // RendererEngine
 
 #endif /* !SHADER_HPP_ */

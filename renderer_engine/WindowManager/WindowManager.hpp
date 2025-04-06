@@ -12,22 +12,24 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-class WindowManager {
-    public:
-        WindowManager(int width, int height, const char *title);
-        ~WindowManager();
+namespace RendererEngine {
+    class WindowManager {
+        public:
+            WindowManager(int width, int height, const char *title);
+            ~WindowManager();
 
-        GLFWwindow *getWindow();
+            GLFWwindow *getWindow();
 
-        bool shouldClose() const;
-        void render() const;
-        void onKey(int key, int scancode, int action, int mods) const;
+            bool shouldClose() const;
+            void render() const;
+            void onKey(int key, int scancode, int action, int mods) const;
 
-        static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
-        static void framebufferSizeCallback(GLFWwindow *window, int width, int height);
+            static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
+            static void framebufferSizeCallback(GLFWwindow *window, int width, int height);
 
-    private:
-        GLFWwindow *_window;
-};
+        private:
+            GLFWwindow *_window;
+    };  // WindowManager
+};  // RendererEngine
 
 #endif /* !WINDOWMANAGER_HPP_ */

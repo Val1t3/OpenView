@@ -10,8 +10,8 @@
 #include "GraphicPipeline.hpp"
 
 int main(int, char**){
-    WindowManager wm(800, 600, "Renderer Engine");
-    GraphicPipeline gp;
+    RendererEngine::WindowManager wm(800, 600, "Renderer Engine");
+    RendererEngine::GraphicPipeline gp;
 
     // Renderer loop
     while(!wm.shouldClose())

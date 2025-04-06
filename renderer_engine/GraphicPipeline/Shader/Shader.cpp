@@ -6,7 +6,7 @@
 
 #include "Shader.hpp"
 
-Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
+RendererManager::Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
 {
     // Read files and convert code to C string
     std::string vertexCodeStr = readFile(vertexPath);
@@ -45,22 +45,22 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
     glDeleteShader(fragment);
 }
 
-Shader::~Shader()
+RendererManager::Shader::~Shader()
 {
     glDeleteProgram(_id);
 }
 
-GLuint Shader::getId() const
+GLuint RendererManager::Shader::getId() const
 {
     return _id;
 }
 
-void Shader::use() const
+void RendererManager::Shader::use() const
 {
     glUseProgram(_id);
 }
 
-std::string Shader::readFile(const std::string &path) const
+std::string RendererManager::Shader::readFile(const std::string &path) const
 {
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -72,7 +72,7 @@ std::string Shader::readFile(const std::string &path) const
     return buffer.str();
 }
 
-int Shader::checkCompileError(GLuint shader, const std::string type) const
+int RendererManager::Shader::checkCompileError(GLuint shader, const std::string type) const
 {
     GLint success;
     GLchar infoLog[1024];

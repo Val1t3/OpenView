@@ -14,15 +14,17 @@
 #include <glad/glad.h>
 // #include <OpenGL/gl.h>
 
-class GraphicPipeline {
-    public:
-        GraphicPipeline();
-        ~GraphicPipeline();
+namespace RendererEngine {
+    class GraphicPipeline {
+        public:
+            GraphicPipeline();
+            ~GraphicPipeline();
 
-        void test();
+            void test();
 
-    private:
-        Shader _shader;
-};
+        private:
+            RendererManager::Shader _shader;
+    };  // GraphicPipeline
+};  // RendererEngine
 
 #endif /* !GRAPHICPIPELINE_HPP_ */
