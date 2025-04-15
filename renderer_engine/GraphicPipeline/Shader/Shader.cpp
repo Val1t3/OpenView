@@ -32,19 +32,19 @@ RendererEngine::Shader::Shader(const std::string &vertexPath, const std::string 
     GLuint vertex = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertex, 1, &vertexCode, nullptr);
     glCompileShader(vertex);
-    if (!checkCompileError(vertex, "VERTEX")) return;
+    if (checkCompileError(vertex, "VERTEX") == -1) return;
 
     GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragment, 1, &fragmentCode, nullptr);
     glCompileShader(fragment);
-    if (!checkCompileError(fragment, "FRAGMENT")) return;
+    if (checkCompileError(fragment, "FRAGMENT") == -1) return;
 
     // Create and link program
     _id = glCreateProgram();
     glAttachShader(_id, vertex);
     glAttachShader(_id, fragment);
     glLinkProgram(_id);
-    if (!checkCompileError(_id, "PROGRAM")) return;
+    if (checkCompileError(_id, "PROGRAM") == -1) return;
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);

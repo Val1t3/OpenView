@@ -21,6 +21,7 @@ namespace RendererEngine {
             GLFWwindow *getWindow();
 
             bool shouldClose() const;
+            void clear() const;
             void render() const;
             void onKey(int key, int scancode, int action, int mods) const;
 

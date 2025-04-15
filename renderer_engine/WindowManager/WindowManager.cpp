@@ -66,11 +66,14 @@ bool RendererEngine::WindowManager::shouldClose() const
     return glfwWindowShouldClose(_window);
 }
 
-void RendererEngine::WindowManager::render() const
+void RendererEngine::WindowManager::clear() const
 {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
 
+void RendererEngine::WindowManager::render() const
+{
     glfwSwapBuffers(_window);
     glfwPollEvents();
 }
