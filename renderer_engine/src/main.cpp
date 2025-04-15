@@ -14,8 +14,10 @@ int main(int, char**){
     RendererEngine::GraphicPipeline gp;
 
     // Renderer loop
-    while(!wm.shouldClose())
+    while(!wm.shouldClose()) {
+        gp.render();
         wm.render();
+    }
 
     // Quit programm
     glfwTerminate();

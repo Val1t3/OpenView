@@ -15,9 +15,10 @@
 #include <glad/glad.h>
 #include <OpenGL/gl.h>
 
-namespace RendererManager {
+namespace RendererEngine {
     class Shader {
         public:
+            Shader();
             Shader(const std::string &vertexPath, const std::string &fragmentPath);
             ~Shader();
 

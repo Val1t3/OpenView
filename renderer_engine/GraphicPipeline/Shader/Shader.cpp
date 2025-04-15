@@ -6,7 +6,12 @@
 
 #include "Shader.hpp"
 
-RendererManager::Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
+RendererEngine::Shader::Shader()
+    : _id(-1)
+{
+}
+
+RendererEngine::Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath)
 {
     // Read files and convert code to C string
     std::string vertexCodeStr = readFile(vertexPath);
@@ -45,22 +50,22 @@ RendererManager::Shader::Shader(const std::string &vertexPath, const std::string
     glDeleteShader(fragment);
 }
 
-RendererManager::Shader::~Shader()
+RendererEngine::Shader::~Shader()
 {
     glDeleteProgram(_id);
 }
 
-GLuint RendererManager::Shader::getId() const
+GLuint RendererEngine::Shader::getId() const
 {
     return _id;
 }
 
-void RendererManager::Shader::use() const
+void RendererEngine::Shader::use() const
 {
     glUseProgram(_id);
 }
 
-std::string RendererManager::Shader::readFile(const std::string &path) const
+std::string RendererEngine::Shader::readFile(const std::string &path) const
 {
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -72,7 +77,7 @@ std::string RendererManager::Shader::readFile(const std::string &path) const
     return buffer.str();
 }
 
-int RendererManager::Shader::checkCompileError(GLuint shader, const std::string type) const
+int RendererEngine::Shader::checkCompileError(GLuint shader, const std::string type) const
 {
     GLint success;
     GLchar infoLog[1024];

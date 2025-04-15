@@ -20,11 +20,13 @@ namespace RendererEngine {
             GraphicPipeline();
             ~GraphicPipeline();
 
-            void test();
+            void render();
 
         private:
-            RendererManager::Shader _shader;
-    };  // GraphicPipeline
+            RendererEngine::Shader _shader;
+            GLuint _vao;
+            GLuint _vbo;
+    }; // GraphicPipeline
 };  // RendererEngine
 
 #endif /* !GRAPHICPIPELINE_HPP_ */
